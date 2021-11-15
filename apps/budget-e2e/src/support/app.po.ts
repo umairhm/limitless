@@ -1,1 +1,2 @@
-export const getGreeting = () => cy.get('h1');
+export const getCurrentMonthExpenses = () => cy.get('li.expense');
+export const getAddExpenseButton = () => cy.get('button#add-expense');

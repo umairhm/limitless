@@ -1,13 +1,14 @@
-import { getGreeting } from '../support/app.po';
+import {
+  getCurrentMonthExpenses,
+  getAddExpenseButton
+} from '../support/app.po';
 
 describe('budget', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to budget!');
+  it('should display expenses and add new expense', () => {
+    getCurrentMonthExpenses().should((e) => expect(e.length).equal(2));
+    getAddExpenseButton().click();
+    getCurrentMonthExpenses().should((e) => expect(e.length).equal(3));
   });
 });
